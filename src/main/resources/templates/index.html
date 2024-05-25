@@ -1,10 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>eeeee</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+rel="stylesheet">
 </head>
 <body>
+    <header class="bg-primary text-white text-center py-3">
+        <img src="logo.png" alt="Logotipo" class="img-fluid" style="max-height: 100px;">
+        <h1>Facultad de Ingenieria</h1>
+        <p>Educación para el futuro</p>
+    </header>
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Facultad UNJu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Acerca de</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Carreras</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-md-3 bg-light">
+                <div class="p-3">
+                    <h4>Menú</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Biblioteca</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Calendario académico</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="col-md-9">
+                <div class="p-3">
+                    <h2>Sobre la Facultad</h2>
+                    <p>La Facultad de Ingenieria ofrece una formación académica de excelencia, con un fuerte compromiso con la investigación y la innovación.</p>
+
+                    <h2>Noticias Recientes</h2>
+                    <p>Esté al tanto de las últimas noticias y eventos que ocurren en nuestra facultad.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>Contacto: Dirección, Teléfono, Correo electrónico</p>
+        <p>Síguenos en:
+            <a href="#" class="text-white">Facebook</a> |
+            <a href="#" class="text-white">Twitter</a> |
+            <a href="#" class="text-white">Instagram</a>
+        </p>
+        <p>@2024 UNJU. Todos los derechos reservados.</p>
+    </footer>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
