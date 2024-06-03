@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+
+<title>Listado Carreras</title>
+</head>
+<body>
+	<div class="container">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th scope="col">Codigo</th>
+	      <th scope="col">Nombre</th>
+	      <th scope="col">Cantidad</th>
+	      <th scope="col">Estado</th>
+	      <th scope="col">Edición</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="carrera : ${listadoCarreras}">
+	      <td th:text="${carrera.codigo}"></td>
+	      <td th:text="${carrera.nombre}"></td>
+	      <td th:text="${carrera.cantidadAnios}"></td>
+	      <td th:text="${carrera.estado}"></td>
+	      	<td>
+				<a th:href="@{'/borrarCarrera/'+${carrera.codigo}}" class="btn btn-danger">Borrar</a>					
+				<a th:href="@{'/modificarCarrera/'+${carrera.codigo}}" class="btn btn-warning" >Modificar</a>
+			</td>
+	    </tr>
+	   </tbody>
+	</table>
+	</div>
+<script	th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
