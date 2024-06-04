@@ -29,15 +29,8 @@ public class ListadoCarreras {
     }
 
     public static void modificarCarrera(Carrera carreraModificada) {
-        for (int i = 0; i < carreras.size(); i++) {
-            Carrera carrera = carreras.get(i);
-            if (carrera.getCodigo().equals(carreraModificada.getCodigo())) {
-                carrera.setNombre(carreraModificada.getNombre());
-                carrera.setCantidadAnios(carreraModificada.getCantidadAnios());
-                carrera.setEstado(carreraModificada.isEstado());
-                break;
-            }
-        }
+        eliminarCarrera(carreraModificada.getCodigo());
+        agregarCarrera(carreraModificada);
     }
 
     public static void eliminarCarrera(String codigo) {
@@ -49,4 +42,5 @@ public class ListadoCarreras {
         }
     }
 }
+
 

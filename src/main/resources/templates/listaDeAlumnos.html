@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+    th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+
+<title>Listado Alumnos</title>
+</head>
+<body>
+    <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">DNI</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Email</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Fecha de Nacimiento</th>
+          <th scope="col">Domicilio</th>
+          <th scope="col">Legajo</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Edición</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="alumno : ${listadoAlumnos}">
+          <td th:text="${alumno.dni}"></td>
+          <td th:text="${alumno.nombre}"></td>
+          <td th:text="${alumno.apellido}"></td>
+          <td th:text="${alumno.email}"></td>
+          <td th:text="${alumno.telefono}"></td>
+          <td th:text="${alumno.fechaNacimiento}"></td>
+          <td th:text="${alumno.domicilio}"></td>
+          <td th:text="${alumno.legajo}"></td>
+          <td th:text="${alumno.estado}"></td>
+              <td>
+                <a th:href="@{'/borrarAlumno/'+${alumno.legajo}}" class="btn btn-danger">Borrar</a>                    
+                <a th:href="@{'/editarAlumno/'+${alumno.legajo}}" class="btn btn-warning">Modificar</a>
+            </td>
+        </tr>
+       </tbody>
+    </table>
+    </div>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

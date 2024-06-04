@@ -26,6 +26,11 @@ public class CarreraController {
 
     @PostMapping("/guardarCarrera")
     public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") Carrera carreraParaGuardar) {
+        // Buscar si ya existe una carrera con el mismo código y eliminarla
+        Carrera carreraExistente = ListadoCarreras.buscarCarreraPorCodigo(carreraParaGuardar.getCodigo());
+        if (carreraExistente != null) {
+            ListadoCarreras.eliminarCarrera(carreraParaGuardar.getCodigo());
+        }
         ListadoCarreras.agregarCarrera(carreraParaGuardar);
 
         ModelAndView modelView = new ModelAndView("listaDeCarreras");
@@ -64,4 +69,5 @@ public class CarreraController {
         return modelView;
     }
 }
+
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario Alumno</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <h1>FORMULARIO ALUMNO</h1>
+
+        <form th:object="${nuevoAlumno}" th:action="@{/guardarAlumno}" method="post">
+            <div class="form-group">
+                <label for="dni">DNI</label>
+                <input type="text" class="form-control" id="dni" th:field="*{dni}">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" placeholder="Apellido">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" th:field="*{telefono}" placeholder="Teléfono">
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}">
+            </div>
+            <div class="form-group">
+                <label for="domicilio">Domicilio</label>
+                <input type="text" class="form-control" id="domicilio" th:field="*{domicilio}" placeholder="Domicilio">
+            </div>
+            <div class="form-group">
+                <label for="legajo">Legajo</label>
+                <input type="text" class="form-control" id="legajo" th:field="*{legajo}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar Alumno</button>
+        </form>
+    </div>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
