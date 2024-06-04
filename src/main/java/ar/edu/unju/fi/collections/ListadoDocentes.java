@@ -2,7 +2,9 @@ package ar.edu.unju.fi.collections;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.model.Docente;
 
 public class ListadoDocentes {
@@ -10,7 +12,7 @@ public class ListadoDocentes {
 	
 	// Método para listar docentes
 	  public static List<Docente> listarDocentes() {
-	    return docentes;
+        return docentes.stream().filter(Docente::getEstado).collect(Collectors.toList());
 	  }
 
 	  // Método para buscar una materia por ID
@@ -25,22 +27,23 @@ public class ListadoDocentes {
 
 	  // Método para agregar un Docente
 	  public static void agregarDocente(Docente d) {
+		  d.setEstado(true);
 	    docentes.add(d);
 	  }
 
 	  // Método para modificar un Docente
-	  public static void modificarDocente(Docente docenteModificado) {
-	    for (int i = 0; i < docentes.size(); i++) {
-	      Docente docente = docentes.get(i);
-	      if (docente.getLegajo().equals(docenteModificado.getLegajo())) {
-	        docentes.set(i, docenteModificado);
-	        break;
-	      }
+	    public static void modificarDocente(Docente docenteModificado) {
+	        eliminarDocente(docenteModificado.getLegajo());
+	        agregarDocente(docenteModificado);
 	    }
-	  }
 
 	  // Método para eliminar un docente
-	  public static void eliminarDocente(String leg) {
-	    docentes.removeIf(docente -> docente.getLegajo().equals(leg));
-	  }
+	    public static void eliminarDocente(String legajo) {
+	        for (Docente alumno : docentes) {
+	            if (alumno.getLegajo().equals(legajo)) {
+	                alumno.setEstado(false);
+	                break;
+	            }
+	        }
+	    }
 }

@@ -10,18 +10,20 @@ public class Docente {
 	private String apellido;
 	private String email;
 	private String telefono;
+	private Boolean estado;
 	
 	
 	public Docente() {
 	}
 
-	public Docente(String legajo, String nombre, String apellido, String email, String telefono) {
+	public Docente(String legajo, String nombre, String apellido, String email, String telefono, Boolean estado) {
 		super();
 		this.legajo = legajo;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.telefono = telefono;
+		this.estado = estado;
 	}
 	public String getLegajo() {
 		return legajo;
@@ -53,6 +55,11 @@ public class Docente {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
+	public Boolean getEstado() {
+		return estado;
+	}
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
 	
 }

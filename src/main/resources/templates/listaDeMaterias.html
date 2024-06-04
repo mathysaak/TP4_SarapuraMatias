@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+    th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+
+<title>Listado Materias</title>
+</head>
+<body>
+    <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Curso</th>
+          <th scope="col">Cantidad de Horas</th>
+          <th scope="col">Modalidad</th>
+          <th scope="col">Docente</th>
+          <th scope="col">Carrera</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Edición</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="materia : ${listadoMaterias}">
+          <td th:text="${materia.codigo}"></td>
+          <td th:text="${materia.nombre}"></td>
+          <td th:text="${materia.curso}"></td>
+          <td th:text="${materia.cantidadHoras}"></td>
+          <td th:text="${materia.modalidad}"></td>
+          <td th:text="${materia.docente.nombre}"></td>
+          <td th:text="${materia.carrera.nombre}"></td>
+          <td th:text="${materia.estado}"></td>
+              <td>
+                <a th:href="@{'/borrarMateria/'+${materia.codigo}}" class="btn btn-danger">Borrar</a>                    
+                <a th:href="@{'/editarMateria/'+${materia.codigo}}" class="btn btn-warning">Modificar</a>
+            </td>
+        </tr>
+       </tbody>
+    </table>
+    </div>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
