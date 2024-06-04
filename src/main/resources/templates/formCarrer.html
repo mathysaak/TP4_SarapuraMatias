@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,33 +8,34 @@
 </head>
 <body>
 
-	<div class="container">
-		<h1>FORMULARIO CARRERA</h1>
+    <div class="container">
+        <h1>FORMULARIO CARRERA</h1>
 
-		<form th:object="${nuevaCarrera}" th:action="@{/guardarCarrera}" method="post">
-			<div class="form-group">
-				<label for="codigo">Codigo</label> 				
-				<input type="text" class="form-control" id="codigo" th:field="*{codigo}">	
-			</div>
-			<div class="form-group">
-				<label for="nombre">Nombre de Carrera</label> 
-				<input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre de carrera">
-			</div>
-			<div class="form-group">
-				<label for="cantidad">Cantidad Años</label> 
-				<input type="number" class="form-control" id="cantidadAnios" th:field="*{cantidadAnios}" placeholder="Cantidad de Años">
-			</div>
-			<!-- Descomentar y añadir th:field si se requiere el campo estado -->
-<!-- 			<div class="form-group">
-				<label for="estado">Estado</label> 
-				<input type="text" class="form-control" id="estado" th:field="*{estado}" placeholder="Estado">
-			</div> -->
+        <form th:object="${nuevaCarrera}" th:action="@{/guardarCarrera}" method="post">
+            <div class="form-group">
+                <label for="codigo">Codigo</label>
+                <input type="text" class="form-control" id="codigo" th:field="*{codigo}" th:readonly="${nuevaCarrera.codigo != null}">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre de Carrera</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre de carrera">
+            </div>
+            <div class="form-group">
+                <label for="cantidad">Cantidad Años</label>
+                <input type="number" class="form-control" id="cantidadAnios" th:field="*{cantidadAnios}" placeholder="Cantidad de Años">
+            </div>
+            <!-- Descomentar y añadir th:field si se requiere el campo estado -->
+            <!-- <div class="form-group">
+                <label for="estado">Estado</label>
+                <input type="text" class="form-control" id="estado" th:field="*{estado}" placeholder="Estado">
+            </div> -->
 
-			<button type="submit" class="btn btn-primary">Guardar Carrera</button>
-		</form>
+            <button type="submit" class="btn btn-primary">Guardar Carrera</button>
+        </form>
+    </div>
 
-	</div>
-
-	<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
+
+
