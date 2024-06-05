@@ -1,53 +1,72 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Formulario Materia</title>
-<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario Materia</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            border-radius: 0;
+        }
+        .btn-primary {
+            border-radius: 0;
+        }
+        .required {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>FORMULARIO MATERIA</h1>
-
+        <h1 class="mb-4">FORMULARIO MATERIA</h1>
         <form th:object="${nuevaMateria}" th:action="@{/guardarMateria}" method="post">
             <div class="form-group">
-                <label for="codigo">Código</label>
-                <input type="text" class="form-control" id="codigo" th:field="*{codigo}">
+                <label for="codigo">Código <span class="required">*</span></label>
+                <input type="text" class="form-control" id="codigo" th:field="*{codigo}" required>
             </div>
             <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre">
+                <label for="nombre">Nombre <span class="required">*</span></label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre" required>
             </div>
             <div class="form-group">
-                <label for="curso">Curso</label>
-                <input type="text" class="form-control" id="curso" th:field="*{curso}" placeholder="Curso">
+                <label for="curso">Curso <span class="required">*</span></label>
+                <input type="text" class="form-control" id="curso" th:field="*{curso}" placeholder="Curso" required>
             </div>
             <div class="form-group">
-                <label for="cantidadHoras">Cantidad de Horas</label>
-                <input type="number" class="form-control" id="cantidadHoras" th:field="*{cantidadHoras}" placeholder="Cantidad de Horas">
+                <label for="cantidadHoras">Cantidad de Horas <span class="required">*</span></label>
+                <input type="number" class="form-control" id="cantidadHoras" th:field="*{cantidadHoras}" placeholder="Cantidad de Horas" required>
             </div>
             <div class="form-group">
-                <label for="modalidad">Modalidad</label>
-                <select class="form-control" id="modalidad" th:field="*{modalidad}">
+                <label for="modalidad">Modalidad <span class="required">*</span></label>
+                <select class="form-control" id="modalidad" th:field="*{modalidad}" required>
                     <option value="Presencial">Presencial</option>
                     <option value="Virtual">Virtual</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="docente">Docente</label>
-                <input type="text" class="form-control" id="docente" th:field="*{docente}" placeholder="Docente">
+                <label for="docente">Docente <span class="required">*</span></label>
+                <select class="form-control" id="docente" th:field="*{docente}" required>
+                    <option th:each="docente : ${listadoDocentes}" th:value="${docente}" th:text="${docente.nombre}"></option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="carrera">Carrera</label>
-                <input type="text" class="form-control" id="carrera" th:field="*{carrera}" placeholder="Carrera">
+                <label for="carrera">Carrera <span class="required">*</span></label>
+                <select class="form-control" id="carrera" th:field="*{carrera}" required>
+                    <option th:each="carrera : ${listadoCarreras}" th:value="${carrera}" th:text="${carrera.nombre}"></option>
+                </select>
             </div>
-
             <button type="submit" class="btn btn-primary">Guardar Materia</button>
         </form>
     </div>
-
     <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
+

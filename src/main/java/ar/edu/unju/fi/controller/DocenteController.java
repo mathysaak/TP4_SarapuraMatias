@@ -17,6 +17,13 @@ public class DocenteController {
     @Autowired
     Docente nuevoDocente = new Docente();
     
+    @GetMapping("/listaDocente")
+    public ModelAndView getListaDocente() {
+        ModelAndView modeloVista = new ModelAndView("listaDeDocentes");
+        //modeloVista.addObject("nuevoDocente", nuevoDocente);
+        return modeloVista;
+    }
+    
     @GetMapping("/formularioDocente")
     public ModelAndView getFormularioDocente() {
         ModelAndView modeloVista = new ModelAndView("formDocente");
@@ -63,8 +70,8 @@ public class DocenteController {
     public ModelAndView updateDocente(@ModelAttribute("nuevoDocente") Docente docenteModificado) {
         ListadoDocentes.modificarDocente(docenteModificado);
 
-        ModelAndView modelView = new ModelAndView("listaDeAlumnos");
-        modelView.addObject("listadoAlumnos", ListadoDocentes.listarDocentes());
+        ModelAndView modelView = new ModelAndView("listaDeDocentes");
+        modelView.addObject("listadoDocentes", ListadoDocentes.listarDocentes());
 
         return modelView;
     }

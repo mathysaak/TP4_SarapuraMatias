@@ -28,18 +28,30 @@ public class ListadoCarreras {
         carreras.add(c);
     }
 
+    //public static void modificarCarrera(Carrera carreraModificada) {
+    //    eliminarCarrera(carreraModificada.getCodigo());
+    //    agregarCarrera(carreraModificada);
+    //}
     public static void modificarCarrera(Carrera carreraModificada) {
-        eliminarCarrera(carreraModificada.getCodigo());
-        agregarCarrera(carreraModificada);
-    }
-
-    public static void eliminarCarrera(String codigo) {
-        for (Carrera carrera : carreras) {
-            if (carrera.getCodigo().equals(codigo)) {
-                carrera.setEstado(false);
+        for (int i = 0; i < carreras.size(); i++) {
+            Carrera carrera = carreras.get(i);
+            if (carrera.getCodigo().equals(carreraModificada.getCodigo())) {
+                carreras.set(i, carreraModificada);
                 break;
             }
         }
+    }
+
+
+    public static void eliminarCarrera(String codigo) {
+    	
+		 //borrado físico
+	    carreras.removeIf(carrera -> carrera.getCodigo().equals(codigo));
+    	
+			/*
+			 * for (Carrera carrera : carreras) { if (carrera.getCodigo().equals(codigo)) {
+			 * carrera.setEstado(false); break; } }
+			 */
     }
 }
 

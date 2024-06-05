@@ -15,7 +15,14 @@ import ar.edu.unju.fi.model.Carrera;
 public class CarreraController {
 
     @Autowired
-    Carrera nuevaCarrera = new Carrera();
+    Carrera nuevaCarrera;
+
+    @GetMapping("/listaCarrera")
+    public ModelAndView getListaCarrera() {
+        ModelAndView modeloVista = new ModelAndView("listaDeCarreras");
+        modeloVista.addObject("listadoCarreras", ListadoCarreras.listarCarreras());
+        return modeloVista;
+    }
 
     @GetMapping("/formularioCarrera")
     public ModelAndView getFormularioCarrera() {
@@ -26,7 +33,6 @@ public class CarreraController {
 
     @PostMapping("/guardarCarrera")
     public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") Carrera carreraParaGuardar) {
-        // Buscar si ya existe una carrera con el mismo código y eliminarla
         Carrera carreraExistente = ListadoCarreras.buscarCarreraPorCodigo(carreraParaGuardar.getCodigo());
         if (carreraExistente != null) {
             ListadoCarreras.eliminarCarrera(carreraParaGuardar.getCodigo());
@@ -40,7 +46,7 @@ public class CarreraController {
     }
 
     @GetMapping("/borrarCarrera/{codigo}")
-    public ModelAndView deleteCarreraDelListado(@PathVariable(name="codigo") String codigo) {
+    public ModelAndView deleteCarreraDelListado(@PathVariable(name = "codigo") String codigo) {
         ListadoCarreras.eliminarCarrera(codigo);
 
         ModelAndView modelView = new ModelAndView("listaDeCarreras");
@@ -50,7 +56,7 @@ public class CarreraController {
     }
 
     @GetMapping("/editarCarrera/{codigo}")
-    public ModelAndView getEditarCarrera(@PathVariable(name="codigo") String codigo) {
+    public ModelAndView getEditarCarrera(@PathVariable(name = "codigo") String codigo) {
         Carrera carrera = ListadoCarreras.buscarCarreraPorCodigo(codigo);
 
         ModelAndView modeloVista = new ModelAndView("formCarrer");

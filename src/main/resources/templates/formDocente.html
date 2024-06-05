@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Formulario Alumno</title>
-<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario Alumno</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            border-radius: 0;
+        }
+        .btn-primary {
+            border-radius: 0;
+        }
+        .required {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>FORMULARIO ALUMNO</h1>
+        <h1 class="mb-4">FORMULARIO DOCENTE</h1>
 
         <form th:object="${nuevoDocente}" th:action="@{/guardarDocente}" method="post">
             <div class="form-group">
-                <label for="legajo">Legajo</label>
-                <input type="text" class="form-control" id="legajo" th:field="*{legajo}">
+                <label for="legajo">Legajo <span class="required">*</span></label>
+                <input type="text" class="form-control" id="legajo" th:field="*{legajo}" required>
             </div>
             <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre">
+                <label for="nombre">Nombre <span class="required">*</span></label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre" required>
             </div>
             <div class="form-group">
-                <label for="apellido">Apellido</label>
-                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" placeholder="Apellido">
+                <label for="apellido">Apellido <span class="required">*</span></label>
+                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" placeholder="Apellido" required>
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Email">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Email" required>
             </div>
             <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input type="text" class="form-control" id="telefono" th:field="*{telefono}" placeholder="Teléfono">
+                <label for="telefono">Teléfono <span class="required">*</span></label>
+                <input type="text" class="form-control" id="telefono" th:field="*{telefono}" placeholder="Teléfono" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar Docente</button>

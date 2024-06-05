@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.model.Docente;
+import ar.edu.unju.fi.model.Materia;
 
 public class ListadoDocentes {
 	public static List<Docente> docentes = new ArrayList<Docente>();
@@ -32,18 +33,19 @@ public class ListadoDocentes {
 	  }
 
 	  // Método para modificar un Docente
-	    public static void modificarDocente(Docente docenteModificado) {
-	        eliminarDocente(docenteModificado.getLegajo());
-	        agregarDocente(docenteModificado);
+	    public static void modificarDocente(Docente doenteModificadao) {
+	        for (int i = 0; i < docentes.size(); i++) {
+	            Docente materia = docentes.get(i);
+	            if (materia.getLegajo().equals(doenteModificadao.getLegajo())) {
+	            	docentes.set(i, doenteModificadao);
+	                break;
+	            }
+	        }
 	    }
 
 	  // Método para eliminar un docente
 	    public static void eliminarDocente(String legajo) {
-	        for (Docente alumno : docentes) {
-	            if (alumno.getLegajo().equals(legajo)) {
-	                alumno.setEstado(false);
-	                break;
-	            }
-	        }
+			 //borrado físico
+		    docentes.removeIf(docente -> docente.getLegajo().equals(legajo));
 	    }
 }

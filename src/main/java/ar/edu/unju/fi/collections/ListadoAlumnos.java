@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import ar.edu.unju.fi.model.Alumno;
+import ar.edu.unju.fi.model.Materia;
 
 public class ListadoAlumnos {
 
@@ -33,17 +34,19 @@ public class ListadoAlumnos {
 
     // Método para modificar un alumno
     public static void modificarAlumno(Alumno alumnoModificado) {
-        eliminarAlumno(alumnoModificado.getLegajo());
-        agregarAlumno(alumnoModificado);
-    }
-
-    // Método para eliminar un alumno
-    public static void eliminarAlumno(String legajo) {
-        for (Alumno alumno : alumnos) {
-            if (alumno.getLegajo().equals(legajo)) {
-                alumno.setEstado(false);
+        for (int i = 0; i < alumnos.size(); i++) {
+            Alumno alumno = alumnos.get(i);
+            if (alumno.getLegajo().equals(alumnoModificado.getLegajo())) {
+                alumnos.set(i, alumnoModificado);
                 break;
             }
         }
+    }
+
+
+    // Método para eliminar un alumno
+    public static void eliminarAlumno(String legajo) {
+		 //borrado físico
+	    alumnos.removeIf(alumno -> alumno.getLegajo().equals(legajo));
     }
 }

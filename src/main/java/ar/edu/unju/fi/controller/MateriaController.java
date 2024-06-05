@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.collections.ListadoCarreras;
+import ar.edu.unju.fi.collections.ListadoDocentes;
 import ar.edu.unju.fi.collections.ListadoMaterias;
+import ar.edu.unju.fi.model.Carrera;
+import ar.edu.unju.fi.model.Docente;
 import ar.edu.unju.fi.model.Materia;
 
 @Controller
@@ -17,16 +21,24 @@ public class MateriaController {
     @Autowired
     Materia nuevaMateria = new Materia();
 
+    @GetMapping("/listaMateria")
+    public ModelAndView getListaMateria() {
+        ModelAndView modeloVista = new ModelAndView("listaDeMaterias");
+        modeloVista.addObject("listadoMaterias", ListadoMaterias.listarMaterias());
+        return modeloVista;
+    }
+
     @GetMapping("/formularioMateria")
     public ModelAndView getFormularioMateria() {
         ModelAndView modeloVista = new ModelAndView("formMateria");
         modeloVista.addObject("nuevaMateria", nuevaMateria);
+        modeloVista.addObject("listadoCarreras", ListadoCarreras.listarCarreras());
+        modeloVista.addObject("listadoDocentes", ListadoDocentes.listarDocentes());
         return modeloVista;
     }
 
     @PostMapping("/guardarMateria")
     public ModelAndView saveMateria(@ModelAttribute("nuevaMateria") Materia materiaParaGuardar) {
-        // Buscar si ya existe una materia con el mismo código y eliminarla
         Materia materiaExistente = ListadoMaterias.buscarMateriaPorCodigo(materiaParaGuardar.getCodigo());
         if (materiaExistente != null) {
             ListadoMaterias.eliminarMateria(materiaParaGuardar.getCodigo());
@@ -55,6 +67,8 @@ public class MateriaController {
 
         ModelAndView modeloVista = new ModelAndView("formMateria");
         modeloVista.addObject("nuevaMateria", materia);
+        modeloVista.addObject("listadoCarreras", ListadoCarreras.listarCarreras());
+        modeloVista.addObject("listadoDocentes", ListadoDocentes.listarDocentes());
 
         return modeloVista;
     }

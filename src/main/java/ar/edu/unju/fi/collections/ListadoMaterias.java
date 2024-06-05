@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.model.Materia;
 
 public class ListadoMaterias {
@@ -33,18 +34,19 @@ public class ListadoMaterias {
 
     // Método para modificar una materia
     public static void modificarMateria(Materia materiaModificada) {
-        eliminarMateria(materiaModificada.getCodigo());
-        agregarMateria(materiaModificada);
+        for (int i = 0; i < materias.size(); i++) {
+            Materia materia = materias.get(i);
+            if (materia.getCodigo().equals(materiaModificada.getCodigo())) {
+            	materias.set(i, materiaModificada);
+                break;
+            }
+        }
     }
 
     // Método para eliminar una materia
     public static void eliminarMateria(String codigo) {
-        for (Materia materia : materias) {
-            if (materia.getCodigo().equals(codigo)) {
-                materia.setEstado(false);
-                break;
-            }
-        }
+		 //borrado físico
+	    materias.removeIf(materia -> materia.getCodigo().equals(codigo));
     }
 }
 

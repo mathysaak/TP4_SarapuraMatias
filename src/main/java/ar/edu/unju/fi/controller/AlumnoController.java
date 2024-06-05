@@ -17,6 +17,12 @@ public class AlumnoController {
     @Autowired
     Alumno nuevoAlumno = new Alumno();
 
+    @GetMapping("/listaAlumno")
+    public ModelAndView getlistaAlumno() {
+        ModelAndView modeloVista = new ModelAndView("listaDeAlumnos");
+
+        return modeloVista;
+    }
     @GetMapping("/formularioAlumno")
     public ModelAndView getFormularioAlumno() {
         ModelAndView modeloVista = new ModelAndView("formAlumno");
